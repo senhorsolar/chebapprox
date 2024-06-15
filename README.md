@@ -1,0 +1,2 @@
+# chebapprox
+Multidimensional Chebyshev approximation
