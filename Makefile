@@ -5,6 +5,12 @@ INCLUDES := -Iinclude # local path
 SRCFILES := $(shell ls src/*.cpp)
 OFILES = $(SRCFILES:.cpp=.o)
 
+EIGEN_PATH ?=
+ifneq ($(strip $(EIGEN_PATH)),)
+	CXXFLAGS += -DHAS_EIGEN
+	INCLUDES += -I$(EIGEH_PATH)
+endif
+
 all: example1D exampleND
 
 %.o: %.cpp
