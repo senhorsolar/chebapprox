@@ -15,5 +15,6 @@ example1D: example1D.cpp $(OFILES)
 
 clean:
 	rm -f example1D
+	rm -f $(OFILES)
 
 .PHONY: all clean
