@@ -77,7 +77,7 @@ class ChebyshevN
         R Approximate (Args... args);
 
         template <class Tuple>
-        R ApproximateV (Tuple&& t) {
+        R Approximate (Tuple&& t) {
             return std::apply ([&](auto...args) {
                 return this->Approximate (std::forward<decltype(args)> (args)...);
             }, t);

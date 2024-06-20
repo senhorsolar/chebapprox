@@ -47,5 +47,5 @@ int main()
 
     std::cout << "Actual: " << f2 (0.5, 0.5, 0.5) << '\n';
     std::cout << "Approx: " << cheb.Approximate (0.5, 0.5, 0.5) << '\n';
-    std::cout << "V Approx: " << cheb.ApproximateV (fargs) << '\n';
+    std::cout << "Approx alt call: " << cheb.Approximate (fargs) << '\n';
 }
