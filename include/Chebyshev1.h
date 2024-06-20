@@ -24,18 +24,18 @@ class Chebyshev1
     public:
         /*
          * \brief ctor
-         * \param[in] N Number of coefficients, Polynomial degree = N-1
-         */
-        Chebyshev1 (std::size_t N);
-
-        /*
-         * \brief Find polynomial coefficients to best approximate function f
-         *
          * \param[in] f Univariate function to approximate
          * \param[in] a Lower bound of domain(f) (default -1)
          * \param[in] b Upper bound of domain(f) (default 1)
          */
-        void Fit (std::function<double(double)> f, double a=-1.0, double b=1.0);
+        Chebyshev1 (std::function<double(double)> f,
+                    double a = -1.0, double b = 1.0);
+
+        /*
+         * \brief Find polynomial coefficients to best approximate function f
+         * \param degree Polynomial degree
+         */
+        void Fit (std::size_t degree);
 
         /*
          * \brief Approximate f(x)
@@ -49,15 +49,15 @@ class Chebyshev1
          * \param[in] x Input value
          * \return T[i](x) for i=0...N
          */
-        std::vector<double> ChebyshevPolynomials (double x);
+        std::vector<double> ChebyshevPolynomials (double x, std::size_t degree);
 
     private:
-        std::size_t m_N; ///< degree = N-1
-        bool m_fitted; ///< flag to indicate if fitted or not
+        std::function<double(double)> m_f; ///< Function
         double m_a; ///< Lower bound of domain(f)
         double m_b; ///< Upper bound of domain(f)
+        std::size_t m_degree; ///< Polynomial degree
+        bool m_fitted; ///< flag to indicate if fitted or not
         std::vector<double> m_coeffs; ///< Fitted poly coefficients
-        std::function<double(double)> m_f; ///< Function
 };
 
 } // namespace

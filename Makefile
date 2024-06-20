@@ -1,19 +1,18 @@
-CC := g++
-CXXFLAGS := -std=c++20
-
+CC := g++-13
+CXXFLAGS := -std=c++23
 INCLUDES := -Iinclude # local path
 SRCFILES := $(shell ls src/*.cpp)
-OFILES = $(SRCFILES:.cpp=.o)
+OFILES = $(patsubst src/%.cpp,obj/%.o, $(SRCFILES))
 
-EIGEN_PATH ?=
-ifneq ($(strip $(EIGEN_PATH)),)
-	CXXFLAGS += -DHAS_EIGEN
-	INCLUDES += -I$(EIGEH_PATH)
-endif
+EIGEN_PATH ?= /usr/include/eigen3
+INCLUDES += -I$(EIGEN_PATH)
 
 all: example1D exampleND
 
-%.o: %.cpp
+obj:
+	mkdir -p $@
+
+obj/%.o: src/%.cpp obj
 	$(CC) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 exampleND: exampleND.cpp $(OFILES)
@@ -24,6 +23,6 @@ example1D: example1D.cpp $(OFILES)
 
 clean:
 	rm -f example1D exampleND
-	rm -f $(OFILES)
+	rm -rf obj
 
 .PHONY: all clean

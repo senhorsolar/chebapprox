@@ -7,10 +7,10 @@ double f (double x)
 
 int main()
 {
-    std::size_t N = 7;
-    Chebyshev::Chebyshev1 cheb (N);
+    std::size_t degree = 7;
+    Chebyshev::Chebyshev1 cheb (f);
 
-    cheb.Fit (f);
+    cheb.Fit (degree);
 
     double x = 0.5;
     double z = f (0.5);
