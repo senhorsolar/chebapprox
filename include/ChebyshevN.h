@@ -33,7 +33,6 @@ constexpr std::array<T, N> constArray (T c) {
  *
  * Class for approximating multivariate functions
  */
-
 template <Float R, Float... Args>
 class ChebyshevN
 {
