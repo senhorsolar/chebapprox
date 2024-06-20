@@ -1,4 +1,4 @@
-# Multidimensional Chebyshev approximation
+# Multivariate Chebyshev approximation
 
 Includes Chebyshev approximation for univariate and multivariate functions.
 
