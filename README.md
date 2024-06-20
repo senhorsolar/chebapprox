@@ -2,4 +2,4 @@
 
 Includes Chebyshev approximation for univariate and multivariate functions.
 
-Note: requires g++ version >= 13.
+Dependencies: g++ version >= 13 and Eigen.
